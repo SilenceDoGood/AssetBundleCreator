@@ -1,0 +1,10 @@
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.exe.config
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.exe
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.pdb
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.csprojResolveAssemblyReference.cache
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset_Bundle_Creator.MainForm.resources
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset_Bundle_Creator.Properties.Resources.resources
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.csproj.GenerateResource.Cache
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.exe
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.pdb
+c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\bin\Debug\XSL_APP_XML.xsl
