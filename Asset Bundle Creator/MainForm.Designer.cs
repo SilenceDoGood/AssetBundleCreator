@@ -31,18 +31,21 @@
             this.CompileImages = new System.Windows.Forms.CheckBox();
             this.XMLFilename = new System.Windows.Forms.TextBox();
             this.Go = new System.Windows.Forms.Button();
-            this.Filename = new System.Windows.Forms.Label();
-            this.filepath = new System.Windows.Forms.TextBox();
-            this.BrowseButton = new System.Windows.Forms.Button();
-            this.DBXMLLabel = new System.Windows.Forms.Label();
+            this.DBSourceString = new System.Windows.Forms.TextBox();
+            this.DBSourceBrowse = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.OutputFolderString = new System.Windows.Forms.TextBox();
+            this.OutputFolderBrowse = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.ImageSourceBrowse = new System.Windows.Forms.Button();
+            this.ImageSourceString = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CompileImages
             // 
             this.CompileImages.AccessibleName = "CompileImages";
             this.CompileImages.AutoSize = true;
-            this.CompileImages.Location = new System.Drawing.Point(12, 107);
+            this.CompileImages.Location = new System.Drawing.Point(12, 207);
             this.CompileImages.Name = "CompileImages";
             this.CompileImages.Size = new System.Drawing.Size(106, 17);
             this.CompileImages.TabIndex = 0;
@@ -56,12 +59,15 @@
             this.XMLFilename.Name = "XMLFilename";
             this.XMLFilename.Size = new System.Drawing.Size(175, 20);
             this.XMLFilename.TabIndex = 1;
+            this.XMLFilename.Text = "Output Filename.xml";
+            this.XMLFilename.WordWrap = false;
+            this.XMLFilename.Click += new System.EventHandler(this.XMLFilename_Click);
             this.XMLFilename.TextChanged += new System.EventHandler(this.XMLFilename_TextChanged);
             // 
             // Go
             // 
             this.Go.AccessibleName = "Go";
-            this.Go.Location = new System.Drawing.Point(208, 145);
+            this.Go.Location = new System.Drawing.Point(328, 201);
             this.Go.Name = "Go";
             this.Go.Size = new System.Drawing.Size(75, 23);
             this.Go.TabIndex = 2;
@@ -69,63 +75,82 @@
             this.Go.UseVisualStyleBackColor = true;
             this.Go.Click += new System.EventHandler(this.Go_Click);
             // 
-            // Filename
+            // DBSourceString
             // 
-            this.Filename.AccessibleName = "File Name Label";
-            this.Filename.AutoSize = true;
-            this.Filename.Location = new System.Drawing.Point(9, 6);
-            this.Filename.Name = "Filename";
-            this.Filename.Size = new System.Drawing.Size(109, 13);
-            this.Filename.TabIndex = 3;
-            this.Filename.Text = "Filename of new XML";
-            this.Filename.Click += new System.EventHandler(this.label1_Click);
+            this.DBSourceString.AccessibleName = "filepath";
+            this.DBSourceString.Location = new System.Drawing.Point(12, 71);
+            this.DBSourceString.Name = "DBSourceString";
+            this.DBSourceString.ReadOnly = true;
+            this.DBSourceString.Size = new System.Drawing.Size(190, 20);
+            this.DBSourceString.TabIndex = 4;
+            this.DBSourceString.Text = "Source XML Location";
+            this.DBSourceString.TextChanged += new System.EventHandler(this.filepath_TextChanged);
             // 
-            // filepath
+            // DBSourceBrowse
             // 
-            this.filepath.AccessibleName = "filepath";
-            this.filepath.Location = new System.Drawing.Point(12, 68);
-            this.filepath.Name = "filepath";
-            this.filepath.ReadOnly = true;
-            this.filepath.Size = new System.Drawing.Size(190, 20);
-            this.filepath.TabIndex = 4;
-            this.filepath.TextChanged += new System.EventHandler(this.filepath_TextChanged);
-            // 
-            // BrowseButton
-            // 
-            this.BrowseButton.AccessibleName = "Browse";
-            this.BrowseButton.Location = new System.Drawing.Point(208, 68);
-            this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(75, 23);
-            this.BrowseButton.TabIndex = 5;
-            this.BrowseButton.Text = "Browse...";
-            this.BrowseButton.UseVisualStyleBackColor = true;
-            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
-            // 
-            // DBXMLLabel
-            // 
-            this.DBXMLLabel.AccessibleName = "DBXMLLabel";
-            this.DBXMLLabel.AutoSize = true;
-            this.DBXMLLabel.Location = new System.Drawing.Point(9, 52);
-            this.DBXMLLabel.Name = "DBXMLLabel";
-            this.DBXMLLabel.Size = new System.Drawing.Size(78, 13);
-            this.DBXMLLabel.TabIndex = 6;
-            this.DBXMLLabel.Text = "Database XML";
-            this.DBXMLLabel.Click += new System.EventHandler(this.label1_Click_1);
+            this.DBSourceBrowse.AccessibleName = "Browse";
+            this.DBSourceBrowse.Location = new System.Drawing.Point(208, 68);
+            this.DBSourceBrowse.Name = "DBSourceBrowse";
+            this.DBSourceBrowse.Size = new System.Drawing.Size(75, 23);
+            this.DBSourceBrowse.TabIndex = 5;
+            this.DBSourceBrowse.Text = "Browse...";
+            this.DBSourceBrowse.UseVisualStyleBackColor = true;
+            this.DBSourceBrowse.Click += new System.EventHandler(this.DBSourceBrowse_Click);
             // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
             this.openFileDialog.Title = "openFileDialog";
             // 
+            // OutputFolderString
+            // 
+            this.OutputFolderString.Location = new System.Drawing.Point(12, 116);
+            this.OutputFolderString.Name = "OutputFolderString";
+            this.OutputFolderString.ReadOnly = true;
+            this.OutputFolderString.Size = new System.Drawing.Size(190, 20);
+            this.OutputFolderString.TabIndex = 7;
+            this.OutputFolderString.Text = "Output Folder Location";
+            // 
+            // OutputFolderBrowse
+            // 
+            this.OutputFolderBrowse.Location = new System.Drawing.Point(208, 113);
+            this.OutputFolderBrowse.Name = "OutputFolderBrowse";
+            this.OutputFolderBrowse.Size = new System.Drawing.Size(75, 23);
+            this.OutputFolderBrowse.TabIndex = 8;
+            this.OutputFolderBrowse.Text = "Browse...";
+            this.OutputFolderBrowse.UseVisualStyleBackColor = true;
+            this.OutputFolderBrowse.Click += new System.EventHandler(this.OutputFolderBrowse_Click);
+            // 
+            // ImageSourceBrowse
+            // 
+            this.ImageSourceBrowse.Location = new System.Drawing.Point(208, 157);
+            this.ImageSourceBrowse.Name = "ImageSourceBrowse";
+            this.ImageSourceBrowse.Size = new System.Drawing.Size(75, 23);
+            this.ImageSourceBrowse.TabIndex = 9;
+            this.ImageSourceBrowse.Text = "Browse...";
+            this.ImageSourceBrowse.UseVisualStyleBackColor = true;
+            this.ImageSourceBrowse.Click += new System.EventHandler(this.ImageSourceBrowse_Click);
+            // 
+            // ImageSourceString
+            // 
+            this.ImageSourceString.Location = new System.Drawing.Point(12, 160);
+            this.ImageSourceString.Name = "ImageSourceString";
+            this.ImageSourceString.ReadOnly = true;
+            this.ImageSourceString.Size = new System.Drawing.Size(190, 20);
+            this.ImageSourceString.TabIndex = 10;
+            this.ImageSourceString.Text = "Image Source Folder";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 180);
-            this.Controls.Add(this.DBXMLLabel);
-            this.Controls.Add(this.BrowseButton);
-            this.Controls.Add(this.filepath);
-            this.Controls.Add(this.Filename);
+            this.ClientSize = new System.Drawing.Size(415, 236);
+            this.Controls.Add(this.ImageSourceString);
+            this.Controls.Add(this.ImageSourceBrowse);
+            this.Controls.Add(this.OutputFolderBrowse);
+            this.Controls.Add(this.OutputFolderString);
+            this.Controls.Add(this.DBSourceBrowse);
+            this.Controls.Add(this.DBSourceString);
             this.Controls.Add(this.Go);
             this.Controls.Add(this.XMLFilename);
             this.Controls.Add(this.CompileImages);
@@ -141,11 +166,14 @@
         private System.Windows.Forms.CheckBox CompileImages;
         private System.Windows.Forms.TextBox XMLFilename;
         private System.Windows.Forms.Button Go;
-        private System.Windows.Forms.Label Filename;
-        private System.Windows.Forms.TextBox filepath;
-        private System.Windows.Forms.Button BrowseButton;
-        private System.Windows.Forms.Label DBXMLLabel;
+        private System.Windows.Forms.TextBox DBSourceString;
+        private System.Windows.Forms.Button DBSourceBrowse;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.TextBox OutputFolderString;
+        private System.Windows.Forms.Button OutputFolderBrowse;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button ImageSourceBrowse;
+        private System.Windows.Forms.TextBox ImageSourceString;
     }
 }
 

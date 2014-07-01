@@ -8,3 +8,15 @@ c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset 
 c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.exe
 c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.pdb
 c:\users\peter\documents\visual studio 2013\Projects\Asset Bundle Creator\Asset Bundle Creator\bin\Debug\XSL_APP_XML.xsl
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.exe.config
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.exe
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.pdb
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\XSL_APP_XML.xsl
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.exe
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\Asset Bundle Creator.pdb
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.csprojResolveAssemblyReference.cache
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset_Bundle_Creator.MainForm.resources
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset_Bundle_Creator.Properties.Resources.resources
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\obj\Debug\Asset Bundle Creator.csproj.GenerateResource.Cache
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\Magick.NET-x64.dll
+C:\Users\Lendross Guile\Documents\AssetBundleCreator\Asset Bundle Creator\bin\Debug\Magick.NET-x64.xml
