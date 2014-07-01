@@ -19,6 +19,11 @@ namespace Asset_Bundle_Creator
     {
         public string newFileName;
         public bool compileImages = false;
+        private bool isSetFilename;
+        private bool isSetXMLSource;
+        private bool isSetOutputFolder;
+        private bool isSetImageSource;
+
 
         public MainForm()
         {
@@ -32,6 +37,7 @@ namespace Asset_Bundle_Creator
             newFileName = tmp;
             XMLFilename.Text = tmp.Replace(" ", string.Empty);
             XMLFilename.SelectionStart = XMLFilename.Text.Length - 4;
+            isSetFilename = true;
         }
 
         private void XMLFilename_Click(object sender, EventArgs e)
@@ -61,7 +67,7 @@ namespace Asset_Bundle_Creator
 
         private void Transform()
         {
-            if ((newFileName != "" && newFileName.Contains(".xml")) && this.DBSourceString.Text != "")
+            if (isSetFilename && isSetImageSource && isSetOutputFolder && isSetXMLSource)
             {
                 try
                 {
@@ -88,25 +94,18 @@ namespace Asset_Bundle_Creator
                         {
                             nav.SetValue(nav.Value.Substring(0, nav.Value.LastIndexOf('.')) + ".png");
                         }
-                        //TO DO: if CompileImages == true then go grab file and convert it
                         if (compileImages)
-                        { 
-                            folderpath = @folderpath + nav.Value.Substring(0, nav.Value.LastIndexOf('.')) + ".psd";
-                            MagickReadSettings settings = new MagickReadSettings();
-                            settings.ColorSpace = ColorSpace.RGB;
-                            settings.Width = 400;
-                            settings.Height = 400;
-                            MagickImage image = new MagickImage();
-                            image.Read(folderpath, settings);
-                            image.Format = MagickFormat.Png;
-                            image.Write(folderpath.Substring(0, folderpath.LastIndexOf('.')) + ".png");
-
-
-                            //Grab Image from source directory to Output Directory
-                            //Convert CMYK to RGB
-                            //Resize img to 400 x 400
-                            //Convert from PSD to PNG
-                            //Save File
+                        {
+                            var fileLookup = folderpath +  "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".psd";
+                            if (File.Exists(@fileLookup))
+                            {
+                                MagickReadSettings settings = new MagickReadSettings();
+                                settings.ColorSpace = ColorSpace.RGB;
+                                MagickImage image = new MagickImage();
+                                image.Read(@folderpath + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".psd", settings);
+                                image.Resize(400, 400);
+                                image.Write(OutputFolderString.Text + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".png");
+                            }
                         }
                     }
 
@@ -130,6 +129,11 @@ namespace Asset_Bundle_Creator
             if (result == DialogResult.OK)
             {
                 this.DBSourceString.Text = this.openFileDialog.FileName;
+                isSetXMLSource = true;
+            }
+            else
+            {
+                isSetXMLSource = false;
             }
         }
 
@@ -140,6 +144,11 @@ namespace Asset_Bundle_Creator
             if (result == DialogResult.OK)
             {
                 this.OutputFolderString.Text = this.folderBrowserDialog1.SelectedPath;
+                isSetOutputFolder = true;
+            }
+            else
+            {
+                isSetOutputFolder = false;
             }
         }
 
@@ -150,6 +159,11 @@ namespace Asset_Bundle_Creator
             if (result == DialogResult.OK)
             {
                 this.ImageSourceString.Text = this.folderBrowserDialog1.SelectedPath;
+                isSetImageSource = true;
+            }
+            else
+            {
+                isSetImageSource = false;
             }
         }
     }
