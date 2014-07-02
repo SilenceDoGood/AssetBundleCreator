@@ -67,7 +67,7 @@
             // Go
             // 
             this.Go.AccessibleName = "Go";
-            this.Go.Location = new System.Drawing.Point(328, 201);
+            this.Go.Location = new System.Drawing.Point(444, 262);
             this.Go.Name = "Go";
             this.Go.Size = new System.Drawing.Size(75, 23);
             this.Go.TabIndex = 2;
@@ -144,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 236);
+            this.ClientSize = new System.Drawing.Size(531, 297);
             this.Controls.Add(this.ImageSourceString);
             this.Controls.Add(this.ImageSourceBrowse);
             this.Controls.Add(this.OutputFolderBrowse);

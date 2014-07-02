@@ -23,7 +23,7 @@ namespace Asset_Bundle_Creator
         private bool isSetXMLSource;
         private bool isSetOutputFolder;
         private bool isSetImageSource;
-
+        private int failCount = 0;
 
         public MainForm()
         {
@@ -106,9 +106,26 @@ namespace Asset_Bundle_Creator
                                 image.Resize(400, 400);
                                 image.Write(OutputFolderString.Text + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".png");
                             }
+                            else
+                            {
+                                MagickReadSettings settings = new MagickReadSettings();
+                                settings.ColorSpace = ColorSpace.RGB;
+                                MagickImage image = new MagickImage();
+                                openFileDialog.Title = nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".psd is missing from the Source Folder"; 
+                                DialogResult result = this.openFileDialog.ShowDialog();
+                                if (result == DialogResult.OK)
+                                {
+                                    image.Read(@openFileDialog.FileName, settings);
+                                    image.Resize(400, 400);
+                                    image.Write(OutputFolderString.Text + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".png");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No File was selected!", "Missing file reference", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                     }
-
                     document.Save(@filepath);
                 }
                 catch (InvalidCastException e)
@@ -165,6 +182,11 @@ namespace Asset_Bundle_Creator
             {
                 isSetImageSource = false;
             }
+        }
+
+        private void FilenameList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
