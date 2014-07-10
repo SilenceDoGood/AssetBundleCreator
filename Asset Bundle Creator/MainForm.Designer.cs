@@ -39,6 +39,8 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.ImageSourceBrowse = new System.Windows.Forms.Button();
             this.ImageSourceString = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // CompileImages
@@ -140,11 +142,20 @@
             this.ImageSourceString.TabIndex = 10;
             this.ImageSourceString.Text = "Image Source Folder";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 262);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(426, 23);
+            this.progressBar1.TabIndex = 11;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 297);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.ImageSourceString);
             this.Controls.Add(this.ImageSourceBrowse);
             this.Controls.Add(this.OutputFolderBrowse);
@@ -174,6 +185,8 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button ImageSourceBrowse;
         private System.Windows.Forms.TextBox ImageSourceString;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

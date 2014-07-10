@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -23,7 +24,7 @@ namespace Asset_Bundle_Creator
         private bool isSetXMLSource;
         private bool isSetOutputFolder;
         private bool isSetImageSource;
-        private int failCount = 0;
+        private Thread t;
 
         public MainForm()
         {
@@ -52,7 +53,8 @@ namespace Asset_Bundle_Creator
 
         private void Go_Click(object sender, EventArgs e)
         {
-            Transform();
+                t = new Thread(Transform);
+                t.Start();
         }
 
         private void CompileImages_CheckedChanged(object sender, EventArgs e)
@@ -77,6 +79,12 @@ namespace Asset_Bundle_Creator
                     XslCompiledTransform transform = new XslCompiledTransform();
                     transform.Load("XSL_APP_XML.xsl");
                     transform.Transform(@readerText, @filepath);
+
+                     XmlDocument xmlD = new XmlDocument();
+                     xmlD.Load(@filepath);
+                     XmlNodeList xmlNL = xmlD.GetElementsByTagName("asset");
+                     float progressCount = xmlNL.Count;
+                     float progressCurrent = 0;
 
                     XmlDocument document = new XmlDocument();
                     document.Load(@filepath);
@@ -105,6 +113,7 @@ namespace Asset_Bundle_Creator
                                 image.Read(@folderpath + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".psd", settings);
                                 image.Resize(400, 400);
                                 image.Write(OutputFolderString.Text + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".png");
+                                progressCurrent++;
                             }
                             else
                             {
@@ -118,19 +127,23 @@ namespace Asset_Bundle_Creator
                                     image.Read(@openFileDialog.FileName, settings);
                                     image.Resize(400, 400);
                                     image.Write(OutputFolderString.Text + "\\" + nav.Value.Substring(0, nav.Value.LastIndexOf(".")) + ".png");
+                                    progressCurrent++;
                                 }
                                 else
                                 {
                                     MessageBox.Show("No File was selected!", "Missing file reference", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
+                            var currentValue = progressCurrent / progressCount * 100;
+                            //progressBar1.Value = (int)currentValue;
                         }
                     }
                     document.Save(@filepath);
+                   
                 }
                 catch (InvalidCastException e)
                 {
-                    
+                    MessageBox.Show("The Following error occured: " + e, "Missing file reference", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -185,6 +198,11 @@ namespace Asset_Bundle_Creator
         }
 
         private void FilenameList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
         {
 
         }
