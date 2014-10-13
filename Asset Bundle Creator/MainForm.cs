@@ -94,11 +94,11 @@ namespace Asset_Bundle_Creator
 
                     foreach(XPathNavigator nav in navigator.Select("cards/card/cells/cell/asset"))
                     {
-                        if(nav.Value.Contains("_1.jpg"))
+                        if (nav.Value.Contains("_1.jpg") || nav.Value.Contains("_1.psd"))
                         {
                             nav.SetValue(nav.Value.Substring(0, nav.Value.LastIndexOf('_')) + ".png");
                         }
-                        else if (nav.Value.Contains(".jpg"))
+                        else if (nav.Value.Contains(".jpg") || nav.Value.Contains(".psd"))
                         {
                             nav.SetValue(nav.Value.Substring(0, nav.Value.LastIndexOf('.')) + ".png");
                         }
